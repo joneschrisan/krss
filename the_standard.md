@@ -303,7 +303,7 @@ Doc blocks should follow the following format and in the order shown.
 * 
 * @author		[Value]
 * 
-* @copyright	[Value]
+* @copyright		[Value]
 * @license		[Value]
 * 
 [* @deprecated]
@@ -322,10 +322,10 @@ Doc blocks should follow the following format and in the order shown.
 * @name			[Value]
 * @version		[Value]
 * 
-* @author		[Value]
+[* @author		[Value]]
 * 
-* @copyright	[Value]
-* @license		[Value]
+[* @copyright		[Value]]
+[* @license		[Value]]
 * 
 [* @deprecated]
 [* @uses]		[Value]
@@ -333,9 +333,9 @@ Doc blocks should follow the following format and in the order shown.
 * 
 [* @param]('S)	[Type]		[Name]		[Description]
 * 
-[* @return]		[Type]		[Name]		[Description]
+[* @return]	[Type]		[Name]		[Description]
 *
-[* @exception]	[Type]					[Description]
+[* @exception]	[Type]				[Description]
 *
 * @example		[value]
 */
@@ -347,10 +347,10 @@ Doc blocks should follow the following format and in the order shown.
 /**
 [* @todo]
 * 
-* @author		[value]
+[* @author		[value]]
 * 
-* @copyright	[value]
-* @license		[value]
+[* @copyright		[value]]
+[* @license		[value]]
 * 
 [* @deprecated]
 [* @uses]		[value]
@@ -363,6 +363,8 @@ Doc blocks should follow the following format and in the order shown.
 ```
 
 Tabs should be used to keep everything inline as shown above for readability. Doc blocks **must** be used for all classes, functions, methods, and properties. Standard variables do not need doc blocks.
+
+Author, copywrite, and license should always be used on functions but only used on methods and properties if they differ to that used for the class they are contained in.
 
 #### 1.7.4: Comments
 
