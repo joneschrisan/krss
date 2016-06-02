@@ -17,7 +17,7 @@
     * 1.5.2: [Switch Statements](#152-switch-statements)
   * 1.6: [Loops](#16-loops)
     * 1.6.1: [Formats](#161-formats)
-    * 1.6.2: [Exiting a loop](#162-exiting-a-loop)
+    * 1.6.2: [Exiting and continuing a loop](#162-exiting-and-continuing-a-loop)
   * 1.7: [Doc Blocks and comments](#17-doc-blocks-and-comments)
     * 1.7.1: [Classes](#171-classes)
     * 1.7.2: [Functions and Methods](#172-functions-and-methods)
@@ -260,7 +260,7 @@ while($i < 100) {
 }
 ```
 
-#### 1.6.2: Exiting a loop
+#### 1.6.2: Exiting and continuing a loop
 
 You should never return from within a loop, instead, if a value is required, always set a variable and "break" out of a loop then return the variable. If you need to skip the remainder of the logic within a loop after a conditional check then a "continue" should be used.
 
