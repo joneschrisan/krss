@@ -2,7 +2,7 @@
 
 ## Contents
 * 1: [PHP](#1-php)
-  * 1.1: [Indent Style](#11-indent)
+  * 1.1: [Indent Style](#11-indent-style)
   * 1.2: [Tabs and Spaces](#12-tabs-and-spaces)
   * 1.3: [Naming](#13-naming)
   * 1.4: [Variables](#14-variables)
@@ -303,15 +303,15 @@ Doc blocks should follow the following format and in the order shown.
 * 
 * @author		[Value]
 * 
-* @copyright		[Value]
+* @copyright	[Value]
 * @license		[Value]
 * 
 [* @deprecated]
-[* @uses]		[Value]
+[* @uses		[Value]]
 */
 ```
 
-#### 1.7.2: Functiona and Methods
+#### 1.7.2: Functions and Methods
 
 ```php
 /**
@@ -324,18 +324,18 @@ Doc blocks should follow the following format and in the order shown.
 * 
 [* @author		[Value]]
 * 
-[* @copyright		[Value]]
+[* @copyright	[Value]]
 [* @license		[Value]]
 * 
 [* @deprecated]
-[* @uses]		[Value]
+[* @uses		[Value]]
 [* @static]
 * 
-[* @param]('S)	[Type]		[Name]		[Description]
+[* @param]('S)	[Type]		[Name]		[Description]	[default value]]
 * 
-[* @return]	[Type]		[Name]		[Description]
+[* @return		[Type]		[Name]		[Description]]
 *
-[* @exception]	[Type]				[Description]
+[* @exception	[Type]					[Description]]
 *
 * @example		[value]
 */
@@ -349,16 +349,14 @@ Doc blocks should follow the following format and in the order shown.
 * 
 [* @author		[value]]
 * 
-[* @copyright		[value]]
+[* @copyright	[value]]
 [* @license		[value]]
 * 
 [* @deprecated]
-[* @uses]		[value]
+[* @uses		[value]]
 [* @static]
 *
-* @property		[Type]		[Name]		[Description]
-*
-* @example		[value]
+* @property		[Type]		[Name]		[Description]	[default value]
 */
 ```
 
