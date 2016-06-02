@@ -13,11 +13,11 @@
     * 1.4.5: [Arrays](#145-arrays)
     * 1.4.6: [Other Variables](#146-other-variables)
   * 1.5: [IF and Switch Statements](#15-if-and-switch-statements)
-    * 1.5.1 [IF Statements](#151-if-statements)
-    * 1.5.2 [Switch Statements](#152-switch-statements)
+    * 1.5.1: [IF Statements](#151-if-statements)
+    * 1.5.2: [Switch Statements](#152-switch-statements)
   * 1.6: [Loops](#16-loops)
-    * 1.6.1 [Format](#161-format)
-    * 1.6.2 [Exiting a loop](#162-exiting-a-loop)
+    * 1.6.1: [Format](#161-format)
+    * 1.6.2: [Exiting a loop](#162-exiting-a-loop)
   * 1.7: [Doc Blocks and comments](#17-doc-blocks-and-comments)
     * 1.7.1: [Classes](#171-classes)
     * 1.7.2: [Functions and Methods](#172-functions-and-methods)
@@ -222,7 +222,7 @@ switch($foo) {
 
 ### 1.6: Loops
 
-#### 1.6.1 Formats
+#### 1.6.1: Formats
 
 Loops should be formatted like [switch statements](#152-switch-statements) with no space before the opening bracket and a space after the closing bracket, the opening curly brace on the same line as the closing bracket, All code indentet from the statement, and the closing curly brace on it's own line with the same indent as the statement.
 
@@ -258,7 +258,7 @@ while($i < 100) {
 }
 ```
 
-#### 1.6.2 Exiting a loop
+#### 1.6.2: Exiting a loop
 
 You should never return from within a loop, instead, if a value is required, always set a variable and "break" out of a loop then return the variable. If you need to skip the remainder of the logic within a loop after a conditional check then a "continue" should be used.
 
@@ -378,7 +378,7 @@ General comments should **only** be used with `//` and not `#` or `/**/` but can
 
 ### 1.8: Functions and Methods
 
-#### 1.8.1 Format
+#### 1.8.1: Format
 
 Functions and methods should always return a value, if the function or method has nothing to return the a return value of 0 should be set for a pass and a positive integer value for a fail. These integers should be used as error codes and documented above the function or method in a doc block *@errorcode* (More on doc blocks [here](#17-doc-blocks))
 
@@ -403,7 +403,7 @@ function another_function(
 }
 ```
 
-#### 1.8.2 Rewriting
+#### 1.8.2: Rewriting
 
 When rewriting a function or method, changing a large portion, or adding / changing functionality that may break or cause advers affects to existing functionality currently using the function or method, the content should be moved to another function or method of the same name and "_v1", a new function or method of the same name and "_v2", the existing function or method should have an extra "version" parameter added to the end of the parameters of "$version = 1" and that used within a switch statement inside the original function or method to decide which of the new functions or methods to call. Any new parameters required for the new functionality should be set to default NULL.
 
