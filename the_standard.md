@@ -16,6 +16,8 @@
     * 1.5.1 [IF Statements](#151-if-statements)
     * 1.5.2 [Switch Statements](#152-switch-statements)
   * 1.6: [Loops](#16-loops)
+    * 1.6.1 [Format](#161-format)
+    * 1.6.2 [Exiting a loop](#162-exiting-a-loop)
   * 1.7: [Doc Blocks and comments](#17-doc-blocks-and-comments)
     * 1.7.1: [Classes](#171-classes)
     * 1.7.2: [Functions and Methods](#172-functions-and-methods)
@@ -79,7 +81,7 @@ class foo {
 }
 ```
 
-The most notable difference between 1TBS and KRSS that only IF statements have a space preceding the opening bracket.
+The most notable difference between 1TBS and KRSS is that only IF statements have a space preceding the opening bracket.
 
 KRSS:
 ```php
@@ -220,6 +222,8 @@ switch($foo) {
 
 ### 1.6: Loops
 
+#### 1.6.1 Formats
+
 Loops should be formatted like [switch statements](#152-switch-statements) with no space before the opening bracket and a space after the closing bracket, the opening curly brace on the same line as the closing bracket, All code indentet from the statement, and the closing curly brace on it's own line with the same indent as the statement.
 
 With multiple values in the statement everything should be space separated as normal.
@@ -251,6 +255,28 @@ foreach($foo as $key => $value) {
 
 while($i < 100) {
 	// Do something
+}
+```
+
+#### 1.6.2 Exiting a loop
+
+You should never return from within a loop, instead, if a value is required, always set a variable and "break" out of a loop then return the variable. If you need to skip the remainder of the logic within a loop after a conditional check then a "continue" should be used.
+
+```php
+$reached_5 = false;
+for($i = 0; $i < 10; $i++) {
+	if ($i == 5) {
+		$reached_5 = true;
+		break;
+	}
+}
+
+$count;
+for($i = 0; $i < 10; $i++) {
+	if ($i % 2 == 0) {
+		continue;
+	}
+	$count++;
 }
 ```
 
@@ -352,6 +378,8 @@ General comments should **only** be used with `//` and not `#` or `/**/` but can
 
 ### 1.8: Functions and Methods
 
+#### 1.8.1 Format
+
 Functions and methods should always return a value, if the function or method has nothing to return the a return value of 0 should be set for a pass and a positive integer value for a fail. These integers should be used as error codes and documented above the function or method in a doc block *@errorcode* (More on doc blocks [here](#17-doc-blocks))
 
 If the function or method takes two or more parameters then it is acceptable to split the parameters over several lines tab indented but not if it only takes one parameter. There should be no space between the function name and the opening bracket, one space after the closing bracket and the opening curly bracket on the same line as the closing bracket.
@@ -360,7 +388,7 @@ A function or method should be no longer than 20 lines. If it goes over this the
 
 If three or more lines are repeated anywhere in the code, within or outside functions and methods then that code should be placed inside a function or within a method.
 
-If the code is to do with an object then the code should be placed within a method for that object. Functions should only be created when the functionality has nothing to do with an object or is updating more than 2 objects.
+If the code is to do with an object then the code should be placed within a method for that object. Functions should only be created when the functionality has nothing to do with an object or is updating 2 or more objects, though that function should call seperate methods within each object to update each object.
 
 ```php
 function my_function($foo) {
@@ -374,6 +402,49 @@ function another_function(
 	// Do something
 }
 ```
+
+#### 1.8.2 Rewriting
+
+When rewriting a function or method, changing a large portion, or adding / changing functionality that may break or cause advers affects to existing functionality currently using the function or method, the content should be moved to another function or method of the same name and "_v1", a new function or method of the same name and "_v2", the existing function or method should have an extra "version" parameter added to the end of the parameters of "$version = 1" and that used within a switch statement inside the original function or method to decide which of the new functions or methods to call. Any new parameters required for the new functionality should be set to default NULL.
+
+*Existing code*
+```php
+function foo($bar) {
+	// Existing code.
+}
+
+foo("my variable");
+```
+
+*Altered code*
+```php
+function foo_v1($bar) {
+	// Existing code.
+}
+
+function foo_v2($bar, $bar_2) {
+	// New code.
+}
+
+function foo($bar, $bar_2 = null, $version = 1) {
+	$returns = null;
+	switch () {
+		case 2:
+			$returns = foo_v2($bar, $bar_2);
+			break;
+		case 1:
+		default:
+			$returns = foo_v1($bar);
+			break;
+	}
+	return $returns;
+}
+
+foo("my variable"); // Calls original code
+foo("my variable", "my second variable", 2); // Calls new code.
+```
+
+All pre existing code using the original function or method should then be checked and converted to use the new function or method, tested thoroughly, and once all instances of the original function or method are ni longer in use, the _v1 function or method can be removed and the _v2 function or method can be moved into the original function or method and the version parameter removed from all instances.
 
 ### 1.9: Classes
 
